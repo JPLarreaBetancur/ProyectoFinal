@@ -1,4 +1,4 @@
-package model;
+package Model;
 
 public class Carro extends Vehiculo {
     public Carro (String placa, String color, String modelo) {
