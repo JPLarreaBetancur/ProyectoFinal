@@ -1,6 +1,6 @@
-package service;
+package Services;
 
-import model.*;
+import Model.*;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -95,7 +95,7 @@ public class ParqueaderoService implements IParqueaderoService {
     }
 
     @Override
-    public void mostrarVehiculosDeCliente(String cedula) {
+    public List<Vehiculo> mostrarVehiculosDeCliente(String cedula) {
         Cliente cliente = buscarClientePorCedula(cedula);
         if (cliente != null) {
             for (Vehiculo v : cliente.getVehiculos()) {
@@ -104,6 +104,7 @@ public class ParqueaderoService implements IParqueaderoService {
         } else {
             System.out.println("Cliente no encontrado.");
         }
+        return null;
     }
 
     @Override
@@ -135,10 +136,11 @@ public class ParqueaderoService implements IParqueaderoService {
     }
 
     @Override
-    public void mostrarMembresias() {
+    public List<Membresia> mostrarMembresias() {
         for (Membresia m : parqueadero.getMembresias()) {
             System.out.println(m);
         }
+        return null;
     }
 
     @Override
@@ -199,17 +201,19 @@ public class ParqueaderoService implements IParqueaderoService {
     }
 
     @Override
-    public void mostrarIngresosTemporales() {
+    public List<IngresoTemporal> mostrarIngresosTemporales() {
         for (IngresoTemporal ingreso : parqueadero.getIngresosTemporales()) {
             System.out.println(ingreso);
         }
+        return null;
     }
 
     @Override
-    public void mostrarHistorialPagos() {
+    public List<Pago> mostrarHistorialPagos() {
         for (Pago p : parqueadero.getHistorialPagos()) {
             System.out.println(p);
         }
+        return null;
     }
 
     @Override
@@ -238,7 +242,7 @@ public class ParqueaderoService implements IParqueaderoService {
     }
 
     @Override
-    public void generarFacturaTemporal(String placa) {
+    public String generarFacturaTemporal(String placa) {
         for (IngresoTemporal ingreso : parqueadero.getIngresosTemporales()) {
             if (ingreso.getVehiculo().getPlaca().equalsIgnoreCase(placa) && ingreso.getFechaSalida() != null) {
                 System.out.println("----- FACTURA TEMPORAL -----");
@@ -247,14 +251,15 @@ public class ParqueaderoService implements IParqueaderoService {
                 System.out.println("Ingreso: " + ingreso.getFechaIngreso());
                 System.out.println("Salida: " + ingreso.getFechaSalida());
                 System.out.println("Monto pagado: $" + ingreso.getMontoPagado());
-                return;
+                return placa;
             }
         }
         System.out.println("No se encontró ingreso temporal finalizado para esta placa.");
+        return placa;
     }
 
     @Override
-    public void generarFacturaMembresia(String placa) {
+    public String generarFacturaMembresia(String placa) {
         Membresia m = parqueadero.buscarMembresiaPorPlaca(placa);
         if (m != null) {
             System.out.println("----- FACTURA MEMBRESÍA -----");
@@ -266,22 +271,25 @@ public class ParqueaderoService implements IParqueaderoService {
         } else {
             System.out.println("No se encontró membresía para esta placa.");
         }
+        return placa;
     }
 
     @Override
-    public void mostrarVehiculosActuales() {
+    public List<Vehiculo> mostrarVehiculosActuales() {
         List<Vehiculo> vehiculos = parqueadero.obtenerVehiculosActuales();
         for (Vehiculo v : vehiculos) {
             System.out.println(v);
         }
+        return vehiculos;
     }
 
     @Override
-    public void mostrarClientesConMembresiasActivas() {
+    public List<Cliente> mostrarClientesConMembresiasActivas() {
         List<Cliente> clientes = parqueadero.obtenerClientesConMembresiaActiva();
         for (Cliente c : clientes) {
             System.out.println(c);
         }
+        return clientes;
     }
 }
 
