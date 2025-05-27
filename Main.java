@@ -11,7 +11,7 @@ import javax.swing.JTextArea;
 
 public class Main {
     public static void main(String[] args) {
-        Parqueadero parqueadero = new Parqueadero("Mi Parqueadero", "Calle 123", "Admin", "3121234567", "contacto@parqueadero.com");
+        Parqueadero parqueadero = new Parqueadero("Mi Parqueadero", "Calle 13", "Admin", "3121234567", "contacto@parqueadero.com");
         IParqueaderoService servicio = new ParqueaderoService(parqueadero);
 
         
