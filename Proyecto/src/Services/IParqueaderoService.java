@@ -39,5 +39,29 @@ public interface IParqueaderoService {
 
     List<Vehiculo> mostrarVehiculosActuales();
     List<Cliente> mostrarClientesConMembresiasActivas();
+//
+    Vehiculo[] getVehiculosPorCliente(String cedula);
 
+    Cliente[] getCliente();
+
+    void registrarIngreso(String placa);
+
+    void registrarSalida(String placa);
+
+    Iterable<? extends Membresia> getMembresias();
+
+    Iterable<? extends IngresoTemporal> getIngresosTemporales();
+
+    Iterable<? extends Pago> getHistorialPagos();
+
+    Iterable<? extends IngresoTemporal> getIngresosPorPeriodo(String periodo);
+
+    int getEspaciosMotos();
+    int getOcupadosMotos();
+    int getEspaciosAutos();
+    int getOcupadosAutos();
+    int getEspaciosCamiones();
+    int getOcupadosCamiones();
+
+    Parqueadero getParqueadero();
 }

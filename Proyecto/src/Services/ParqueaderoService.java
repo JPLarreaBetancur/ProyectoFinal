@@ -274,6 +274,7 @@ public class ParqueaderoService implements IParqueaderoService {
         return placa;
     }
 
+
     @Override
     public List<Vehiculo> mostrarVehiculosActuales() {
         List<Vehiculo> vehiculos = parqueadero.obtenerVehiculosActuales();
@@ -290,6 +291,79 @@ public class ParqueaderoService implements IParqueaderoService {
             System.out.println(c);
         }
         return clientes;
+    }
+
+    @Override
+    public Vehiculo[] getVehiculosPorCliente(String cedula) {
+        return new Vehiculo[0];
+    }
+
+    @Override
+    public Cliente[] getCliente() {
+        return new Cliente[0];
+    }
+
+    @Override
+    public void registrarIngreso(String placa) {
+
+    }
+
+    @Override
+    public void registrarSalida(String placa) {
+
+    }
+
+    @Override
+    public Iterable<? extends Membresia> getMembresias() {
+        return null;
+    }
+
+    @Override
+    public Iterable<? extends IngresoTemporal> getIngresosTemporales() {
+        return null;
+    }
+
+    @Override
+    public Iterable<? extends Pago> getHistorialPagos() {
+        return null;
+    }
+
+    @Override
+    public Iterable<? extends IngresoTemporal> getIngresosPorPeriodo(String periodo) {
+        return null;
+    }
+    @Override
+    public int getEspaciosMotos() {
+        return parqueadero.getEspaciosMotos();
+    }
+
+    @Override
+    public int getOcupadosMotos() {
+        return parqueadero.getOcupadosMotos();
+    }
+
+    @Override
+    public int getEspaciosAutos() {
+        return parqueadero.getEspaciosAutos();
+    }
+
+    @Override
+    public int getOcupadosAutos() {
+        return parqueadero.getOcupadosAutos();
+    }
+
+    @Override
+    public int getEspaciosCamiones() {
+        return parqueadero.getEspaciosCamiones();
+    }
+
+    @Override
+    public int getOcupadosCamiones() {
+        return parqueadero.getOcupadosCamiones();
+    }
+    @Override
+    public Parqueadero getParqueadero() {
+        return parqueadero; // Devuelve la instancia de Parqueadero
     }
 }
 
